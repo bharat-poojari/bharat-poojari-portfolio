@@ -27,5 +27,5 @@ The canonical URL, social preview metadata, structured data, robots policy, and 
 
 ## Notes
 
-- The contact form opens your visitor's email app with the message prefilled (a `mailto:` link). There is no server, so nothing is stored.
+- The contact form sends submissions to Formspree; visitors can use the copy-address button as an email fallback.
 - Fonts (Bricolage Grotesque, JetBrains Mono) load from Google Fonts; system fonts are the fallback.

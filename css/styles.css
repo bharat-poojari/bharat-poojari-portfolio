@@ -207,6 +207,8 @@ button.chip{transition:all .25s}button.chip:hover{border-color:var(--acc);color:
 .err{color:#ff7a70;font:400 .7rem var(--mono);min-height:1em}
 .form-actions{display:flex;gap:12px;flex-wrap:wrap}
 .form-note{text-transform:none;letter-spacing:0;font-size:.72rem}
+.form-note[data-state="success"]{color:var(--acc)}
+.form-note[data-state="error"]{color:#ff7a70}
 
 /* footer */
 .footer{padding:60px 0 28px;overflow:hidden}

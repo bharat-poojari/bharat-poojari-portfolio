@@ -202,15 +202,15 @@
           <li><span>Sirsi, Karnataka, India</span></li>
         </ul>
       </div>
-      <form id="contactForm" class="form" novalidate>
+      <form id="contactForm" class="form" action="https://formspree.io/f/xrealqoa" method="POST" novalidate>
         <div class="field"><label for="fName">Name</label><input id="fName" name="name" type="text" autocomplete="name" required><small class="err" data-for="fName"></small></div>
         <div class="field"><label for="fEmail">Your email</label><input id="fEmail" name="email" type="email" autocomplete="email" required><small class="err" data-for="fEmail"></small></div>
         <div class="field"><label for="fMsg">Message</label><textarea id="fMsg" name="message" rows="5" required></textarea><small class="err" data-for="fMsg"></small></div>
         <div class="form-actions">
-          <button class="btn btn-solid" type="submit" data-magnetic data-cursor="Send"><span>Compose email</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <button class="btn btn-solid" id="submitBtn" type="submit" data-magnetic data-cursor="Send"><span>Send message</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <button class="btn btn-line" type="button" id="copyMail"><span>Copy address</span></button>
         </div>
-        <p class="mono muted form-note" id="formNote" role="status">This opens your email app with the message prefilled, addressed to me.</p>
+        <p class="mono muted form-note" id="formNote" role="status">Your message will be sent through Formspree. You can also copy my email address.</p>
       </form>
     </div>
   </div>

@@ -427,23 +427,48 @@
   safe(function () {
     var f = $('#contactForm'), note = $('#formNote');
     function setErr(id, msg) { var fi = $('#' + id), box = fi.closest('.field'); $('.err[data-for="' + id + '"]').textContent = msg || ''; box.classList.toggle('bad', !!msg); fi.setAttribute('aria-invalid', msg ? 'true' : 'false'); }
-    f.addEventListener('submit', function (e) {
+    function setStatus(message, state) {
+      note.textContent = message;
+      if (state) note.dataset.state = state; else note.removeAttribute('data-state');
+    }
+    f.addEventListener('submit', async function (e) {
       e.preventDefault();
+      if (f.getAttribute('aria-busy') === 'true') return;
       var n = $('#fName').value.trim(), m = $('#fEmail').value.trim(), g = $('#fMsg').value.trim(), ok = true, first = null;
       setErr('fName', n ? '' : 'Please tell me your name.'); if (!n) { ok = false; first = first || $('#fName'); }
       var em = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m); setErr('fEmail', em ? '' : 'Please enter a valid email address.'); if (!em) { ok = false; first = first || $('#fEmail'); }
       setErr('fMsg', g.length >= 10 ? '' : 'A little more detail, please (10+ characters).'); if (g.length < 10) { ok = false; first = first || $('#fMsg'); }
-      if (!ok) { first.focus(); note.textContent = 'Please fix the highlighted fields.'; return; }
-      var subject = 'Hello from ' + n + ' — via your portfolio', bodyTxt = g + '\n\n— ' + n + ' (' + m + ')';
-      var href = 'mailto:' + D.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyTxt);
-      if (href.length > 1900) { note.textContent = 'That message is long for an email link. Please shorten it a little, or copy my address and write to me directly.'; return; }
-      note.textContent = 'Opening your email app with the message prefilled. If nothing happens, copy my address below and send it directly.';
-      window.location.href = href;
+      if (!ok) { first.focus(); setStatus('Please fix the highlighted fields.', 'error'); return; }
+      var submit = $('#submitBtn'), submitLabel = submit.querySelector('span'), originalLabel = submitLabel.textContent;
+      f.setAttribute('aria-busy', 'true');
+      submit.disabled = true;
+      submitLabel.textContent = 'Sending...';
+      setStatus('Sending your message...', 'sending');
+      try {
+        var response = await fetch(f.action, {
+          method: 'POST',
+          body: new FormData(f),
+          headers: { Accept: 'application/json' }
+        });
+        if (!response.ok) {
+          setStatus('Your message could not be sent (HTTP ' + response.status + '). Please try again or email ' + D.email + '.', 'error');
+          return;
+        }
+        f.reset();
+        setStatus('Thanks — your message has been sent. I’ll get back to you soon.', 'success');
+      } catch (error) {
+        console.error('Form submission error:', error);
+        setStatus('A network error prevented sending. Please try again or email ' + D.email + '.', 'error');
+      } finally {
+        f.removeAttribute('aria-busy');
+        submit.disabled = false;
+        submitLabel.textContent = originalLabel;
+      }
     });
     $('#copyMail').addEventListener('click', function () {
-      function done() { note.textContent = 'Copied ' + D.email + ' to your clipboard.'; }
+      function done() { setStatus('Copied ' + D.email + ' to your clipboard.', 'success'); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(D.email).then(done, fallback); else fallback();
-      function fallback() { var t = el('textarea'); t.value = D.email; t.style.position = 'fixed'; t.style.opacity = 0; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) { note.textContent = 'Email: ' + D.email; } t.remove(); }
+      function fallback() { var t = el('textarea'); t.value = D.email; t.style.position = 'fixed'; t.style.opacity = 0; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) { setStatus('Email: ' + D.email); } t.remove(); }
     });
     $('#year').textContent = new Date().getFullYear();
   });
