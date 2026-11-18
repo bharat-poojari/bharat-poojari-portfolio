@@ -122,24 +122,29 @@ window.BP = {
       art: 'code'
     },
     {
-      id: 'tracker', name: 'Daily Accountability Tracker', kind: 'Serverless web app',
-      tag: 'No framework. No database.',
-      lead: 'A no-framework HTML, CSS and JavaScript tracker for a daily routine and study schedule. Each update is stored as JSON in a GitHub repository through a Vercel serverless function.',
+      id: 'drilldeck', name: 'DrillDeck', kind: 'Karnataka state exam practice',
+      tag: 'Custom tests. Focused practice.',
+      lead: 'A customizable mock-test app for Karnataka state-level exams, with question banks across General Knowledge, Kannada, English, and Computer. Built with vanilla JavaScript modules and Vercel functions, with optional score sharing and chat.',
       caps: [
-        'Daily routine and study schedule tracking',
-        'Updates written to data/data.json in a GitHub repository',
-        'Works across devices from the same URL',
-        'GitHub token kept server-side, never sent to the browser'
+        'Build tests by paper, subject, topic, difficulty, question count and duration',
+        'Exam mode with a timer, question palette, review flags and autosave',
+        'Untimed practice with immediate feedback, explanations and bookmarks',
+        'Daily drills and revision sets based on saved test history',
+        'Optional opt-in leaderboard scores and shared chat'
       ],
-      stack: ['HTML', 'CSS', 'JavaScript', 'Vercel Functions', 'GitHub Contents API'],
-      source: 'As documented in the repository README.',
+      stack: ['HTML5', 'CSS3', 'JavaScript modules', 'Vercel Functions', 'GitHub Contents API'],
+      source: 'As documented in the DrillDeck repository README.',
       arch: [
-        ['Browser', 'Vanilla HTML, CSS and JavaScript'],
-        ['Function', 'api/data.js on Vercel holds the secret and performs the write'],
-        ['Storage', 'data/data.json committed to a GitHub repository']
+        ['Interface', 'Vanilla HTML, CSS and JavaScript modules power mock-test, practice and revision modes'],
+        ['Question bank', 'JSON datasets provide subject and topic question pools'],
+        ['Services', 'Vercel functions use the GitHub Contents API for optional chat and leaderboard data'],
+        ['Delivery', 'Deployed on Vercel']
       ],
-      links: [['Repository', 'https://github.com/bharat-poojari/tt']],
-      art: 'track'
+      links: [
+        ['Live site', 'https://drilldeck.vercel.app/'],
+        ['Repository', 'https://github.com/bharat-poojari/drilldeck']
+      ],
+      art: 'news'
     },
     {
       id: 'portfolio', name: 'First portfolio', kind: 'Vanilla JS · terminal UI',
