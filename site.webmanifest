@@ -1,0 +1,17 @@
+{
+  "name": "Bharat Poojari Portfolio",
+  "short_name": "Bharat Poojari",
+  "description": "Portfolio of Bharat Poojari, a full-stack developer in Sirsi, Karnataka.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07080a",
+  "theme_color": "#07080a",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
