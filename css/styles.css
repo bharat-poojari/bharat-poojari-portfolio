@@ -265,12 +265,78 @@ html:not(.js) .hero-name .ch{transform:none}
 }
 @media (max-width:760px){
   .menu-btn{display:grid}
-  #menu{position:fixed;inset:0;background:var(--bg);flex-direction:column;justify-content:center;padding:0 var(--pad);gap:6px;transform:translateY(-100%);transition:transform .7s var(--ease-io);visibility:hidden;z-index:-1}
+  #nav.hide{transform:none}
+  #menu{position:fixed;inset:0;background:var(--bg);flex-direction:column;justify-content:center;padding:0 var(--pad);gap:6px;transform:translateY(-100%);transition:transform .7s var(--ease-io);visibility:hidden;z-index:1}
+  #nav.solid #menu{height:100vh;height:100dvh}
   #menu.open{transform:none;visibility:visible}
   #menu a{font-size:clamp(2.2rem,11vw,3.4rem);font-weight:700;letter-spacing:-.04em;color:var(--fg)}
   #menu a i{font-size:.7rem}
   .nav-tools{position:relative;z-index:2}.logo{position:relative;z-index:2}
+  .section{padding:48px 0;scroll-margin-top:72px}
+  .sec-head{gap:10px;padding-bottom:12px;margin-bottom:24px}
+  .sec-head h2{font-size:.68rem}
+  .statement{font-size:clamp(1.45rem,6.2vw,2rem)}
+  .statement.small{font-size:1.2rem;margin-bottom:14px}
+  .facts{margin-top:32px}
   .facts{grid-template-columns:1fr}.fact{border-right:0;margin-right:0}
+  .fact{padding:18px 0}
+  .fact h3{font-size:1.15rem;margin:8px 0}
+  .skills-grid{gap:0}
+  .constellation-wrap{display:none}
+  .cat-tabs{gap:6px;margin-bottom:16px}
+  .cat-tabs button{font-size:.65rem;padding:8px 12px}
+  #skillList{display:flex;flex-direction:column}
+  .skill-group{order:1;padding:13px 0}
+  .skill-group.selected{order:0}
+  .skill-group.selected h3{color:var(--acc)}
+  .skill-group h3{font-size:1.2rem;margin-bottom:8px}
+  .skill-group ul{gap:6px 12px}
+  .skill-group li{font-size:.92rem}
+  .proj-btn{gap:10px;padding:22px 0}
+  .proj-name{font-size:clamp(1.8rem,9vw,3rem)}
+  .proj.flag .proj-name{font-size:clamp(2rem,10vw,3.4rem)}
+  .proj-meta{font-size:.62rem}
+  .lab-grid{gap:20px}
+  .term-body{height:280px;padding:14px;font-size:.74rem}
+  .term-form{gap:6px;padding:10px 12px}
+  .term-form label{font-size:.68rem}
+  .term-form input{font-size:.78rem}
+  .tl{gap:6px;padding:20px 0}
+  .tl h3{font-size:1.25rem}
+  .contact-grid{gap:28px}
+  .big-cta{font-size:clamp(2.5rem,12vw,4rem);margin-bottom:28px}
+  .avail p:not(.pill){font-size:1rem}
+  .form{gap:16px}
+  .field input,.field textarea{font-size:1.05rem}
+  .form-actions{gap:8px}
+  .form-actions .btn{padding:11px 16px;font-size:.84rem}
+  .footer{padding:38px 0 22px}
+  .foot-name{font-size:clamp(2.8rem,13vw,6rem);margin-bottom:24px}
+  .foot-row{font-size:.62rem}
+  .foot-row nav{gap:14px}
+  .case{transition:clip-path .85s var(--ease-io),visibility 0s linear .85s}
+  .case.open{transition:clip-path .85s var(--ease-io),visibility 0s}
+  .case-inner{padding-top:14px;padding-bottom:36px}
+  .case-top{margin-bottom:28px}
+  .case-top .btn{padding:8px 12px;font-size:.8rem}
+  .case-kind{font-size:.62rem;margin-bottom:8px}
+  .case-title{font-size:clamp(2.5rem,12vw,4.2rem);line-height:.92;overflow-wrap:anywhere}
+  .case-lead{font-size:1.05rem;line-height:1.4;margin:16px 0}
+  .case-links{gap:8px;margin-bottom:26px}
+  .case-links .btn{flex:1 1 calc(50% - 8px);justify-content:center;min-width:0;padding:10px 12px;font-size:.82rem;white-space:normal;text-align:center}
+  .case-cols{gap:20px;padding-top:18px}
+  .case-cols h3,.arch h3{font-size:.68rem;margin-bottom:10px}
+  .case-list li{padding:10px 0;font-size:.94rem;gap:10px}
+  .case .chips{gap:6px;margin-top:12px}
+  .case .chip{font-size:.6rem;padding:5px 9px}
+  .arch{margin-top:26px;padding-top:18px}
+  .arch-flow li{grid-template-columns:28px minmax(0,1fr);gap:6px 10px;padding:13px 0}
+  .arch-flow .n{grid-row:span 2}
+  .arch-flow b{grid-column:2;white-space:nowrap;overflow-wrap:normal;font-size:clamp(.85rem,4vw,1rem)}
+  .arch-flow span:not(.n){grid-column:2;font-size:.9rem;overflow-wrap:anywhere}
+  .arch-flow li::after{left:10px}
+  .next-case{margin-top:32px;padding-top:18px}
+  .next-case b{font-size:clamp(1.8rem,8vw,3rem);overflow-wrap:anywhere}
   .hero-name .line:nth-child(2){padding-left:0}
   .scroll-cue{display:none}
   .hero-row{align-items:flex-start}

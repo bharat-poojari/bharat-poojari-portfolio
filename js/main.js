@@ -272,7 +272,10 @@
     function setCat(id) {
       activeCat = (id === 'all') ? null : id;
       $$('button', tabs).forEach(function (b) { var on = (b.dataset.cat === 'all' && !activeCat) || b.dataset.cat === activeCat; b.setAttribute('aria-pressed', String(on)); });
-      $$('.skill-group', out).forEach(function (g) { g.classList.toggle('dim', !!activeCat && g.dataset.cat !== activeCat); });
+      $$('.skill-group', out).forEach(function (g) {
+        g.classList.toggle('dim', !!activeCat && g.dataset.cat !== activeCat);
+        g.classList.toggle('selected', !!activeCat && g.dataset.cat === activeCat);
+      });
       if (window.__constRedraw) window.__constRedraw();
     }
     setCat(null);
